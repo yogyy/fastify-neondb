@@ -2,7 +2,7 @@ import { env } from "./config/env";
 import { db } from "./db";
 import { logger } from "./utils/logger";
 import { buildServer } from "./utils/server";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { migrate } from "drizzle-orm/postgres-js/migrator";
 
 async function gracefulShutdown({
   app,
@@ -17,9 +17,9 @@ async function main() {
 
   await app.listen({ port: env.PORT, host: env.HOST });
 
-  await migrate(db, {
-    migrationsFolder: "./migration",
-  });
+  // await migrate(db, {
+  //   migrationsFolder: "./migration",
+  // });
   const signals = ["SIGINT", "SIGTERM"];
 
   // logger.debug(env, "using env");
