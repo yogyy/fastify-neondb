@@ -17,9 +17,9 @@ async function main() {
 
   await app.listen({ port: env.PORT, host: env.HOST });
 
-  // await migrate(db, {
-  //   migrationsFolder: "./migration",
-  // });
+  await migrate(db, {
+    migrationsFolder: "./migration",
+  });
   const signals = ["SIGINT", "SIGTERM"];
 
   // logger.debug(env, "using env");

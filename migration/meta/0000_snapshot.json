@@ -1,11 +1,11 @@
 {
-  "id": "8454eb37-1150-4b38-aa71-c80293c49620",
+  "id": "43a58a1c-d148-470c-9560-a8568c988567",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "applications": {
-      "name": "applications",
+    "fast_pg_applications": {
+      "name": "fast_pg_applications",
       "schema": "",
       "columns": {
         "id": {
@@ -41,8 +41,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "roles": {
-      "name": "roles",
+    "fast_pg_roles": {
+      "name": "fast_pg_roles",
       "schema": "",
       "columns": {
         "id": {
@@ -95,10 +95,10 @@
         }
       },
       "foreignKeys": {
-        "roles_applicationId_applications_id_fk": {
-          "name": "roles_applicationId_applications_id_fk",
-          "tableFrom": "roles",
-          "tableTo": "applications",
+        "fast_pg_roles_applicationId_fast_pg_applications_id_fk": {
+          "name": "fast_pg_roles_applicationId_fast_pg_applications_id_fk",
+          "tableFrom": "fast_pg_roles",
+          "tableTo": "fast_pg_applications",
           "columnsFrom": [
             "applicationId"
           ],
@@ -110,8 +110,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "roles_name_applicationId_pk": {
-          "name": "roles_name_applicationId_pk",
+        "fast_pg_roles_name_applicationId_pk": {
+          "name": "fast_pg_roles_name_applicationId_pk",
           "columns": [
             "name",
             "applicationId"
@@ -120,8 +120,8 @@
       },
       "uniqueConstraints": {}
     },
-    "users": {
-      "name": "users",
+    "fast_pg_users": {
+      "name": "fast_pg_users",
       "schema": "",
       "columns": {
         "id": {
@@ -180,10 +180,10 @@
         }
       },
       "foreignKeys": {
-        "users_applicationId_applications_id_fk": {
-          "name": "users_applicationId_applications_id_fk",
-          "tableFrom": "users",
-          "tableTo": "applications",
+        "fast_pg_users_applicationId_fast_pg_applications_id_fk": {
+          "name": "fast_pg_users_applicationId_fast_pg_applications_id_fk",
+          "tableFrom": "fast_pg_users",
+          "tableTo": "fast_pg_applications",
           "columnsFrom": [
             "applicationId"
           ],
@@ -195,8 +195,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "users_email_applicationId_pk": {
-          "name": "users_email_applicationId_pk",
+        "fast_pg_users_email_applicationId_pk": {
+          "name": "fast_pg_users_email_applicationId_pk",
           "columns": [
             "email",
             "applicationId"
@@ -205,8 +205,8 @@
       },
       "uniqueConstraints": {}
     },
-    "usersToRoles": {
-      "name": "usersToRoles",
+    "fast_pg_usersToRoles": {
+      "name": "fast_pg_usersToRoles",
       "schema": "",
       "columns": {
         "applicationId": {
@@ -230,10 +230,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "usersToRoles_applicationId_applications_id_fk": {
-          "name": "usersToRoles_applicationId_applications_id_fk",
-          "tableFrom": "usersToRoles",
-          "tableTo": "applications",
+        "fast_pg_usersToRoles_applicationId_fast_pg_applications_id_fk": {
+          "name": "fast_pg_usersToRoles_applicationId_fast_pg_applications_id_fk",
+          "tableFrom": "fast_pg_usersToRoles",
+          "tableTo": "fast_pg_applications",
           "columnsFrom": [
             "applicationId"
           ],
@@ -243,10 +243,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "usersToRoles_roleId_roles_id_fk": {
-          "name": "usersToRoles_roleId_roles_id_fk",
-          "tableFrom": "usersToRoles",
-          "tableTo": "roles",
+        "fast_pg_usersToRoles_roleId_fast_pg_roles_id_fk": {
+          "name": "fast_pg_usersToRoles_roleId_fast_pg_roles_id_fk",
+          "tableFrom": "fast_pg_usersToRoles",
+          "tableTo": "fast_pg_roles",
           "columnsFrom": [
             "roleId"
           ],
@@ -256,10 +256,10 @@
           "onDelete": "no action",
           "onUpdate": "no action"
         },
-        "usersToRoles_userId_users_id_fk": {
-          "name": "usersToRoles_userId_users_id_fk",
-          "tableFrom": "usersToRoles",
-          "tableTo": "users",
+        "fast_pg_usersToRoles_userId_fast_pg_users_id_fk": {
+          "name": "fast_pg_usersToRoles_userId_fast_pg_users_id_fk",
+          "tableFrom": "fast_pg_usersToRoles",
+          "tableTo": "fast_pg_users",
           "columnsFrom": [
             "userId"
           ],
@@ -271,8 +271,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "usersToRoles_applicationId_roleId_userId_pk": {
-          "name": "usersToRoles_applicationId_roleId_userId_pk",
+        "fast_pg_usersToRoles_applicationId_roleId_userId_pk": {
+          "name": "fast_pg_usersToRoles_applicationId_roleId_userId_pk",
           "columns": [
             "applicationId",
             "roleId",
