@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "tsx watch src/main.ts",
     "migrate": "drizzle-kit generate:pg",
+    "drop": "drizzle-kit drop",
     "db:push": "drizzle-kit up:pg",
     "studio": "drizzle-kit studio"
   },
@@ -27,3 +28,4 @@
     "zod-to-json-schema": "^3.22.4"
   }
 }
+

@@ -1,12 +1,14 @@
 import {
-  pgTable,
   primaryKey,
   text,
   timestamp,
   uniqueIndex,
   uuid,
   varchar,
+  pgTableCreator,
 } from "drizzle-orm/pg-core";
+
+const pgTable = pgTableCreator((name) => `fast_pg_${name}`);
 
 export const applications = pgTable("applications", {
   id: uuid("id").primaryKey().defaultRandom(),
