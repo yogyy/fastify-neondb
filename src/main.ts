@@ -19,7 +19,7 @@ async function main() {
 
   // await migrate(db, {
   //   migrationsFolder: "./migration",
-  // }); // <== un-comment this when migration
+  // });
   const signals = ["SIGINT", "SIGTERM"];
 
   // logger.debug(env, "using env");
