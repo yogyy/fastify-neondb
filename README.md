@@ -42,7 +42,7 @@
 
 <img src ="./img/data-flow.png" />
 
-## Video structure
+## Code structure
 
 1. Setup the initial application
 2. Create a database with Neon
