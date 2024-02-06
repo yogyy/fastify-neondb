@@ -5,6 +5,7 @@ import { usersRoute } from "@/modules/users/users.routes";
 import { roleRoutes } from "@/modules/roles/role.routes";
 import guard from "fastify-guard";
 import jwt from "jsonwebtoken";
+import { env } from "@/config/env";
 
 type User = {
   id: string;
@@ -33,8 +34,8 @@ export async function buildServer() {
 
     try {
       const token = authHeader.replace("Bearer ", "");
-      const decoded = jwt.verify(token, "rahasianegara") as User;
-
+      const decoded = jwt.verify(token, env.JWT_SECRET) as User;
+      console.log(env.JWT_SECRET);
       console.log("user", decoded);
 
       req.user = decoded;

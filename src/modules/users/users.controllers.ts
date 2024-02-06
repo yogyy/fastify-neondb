@@ -14,6 +14,7 @@ import {
   getUsersByApp,
 } from "./users.services";
 import { logger } from "@/utils/logger";
+import { env } from "@/config/env";
 
 export async function createUserHandler(
   request: FastifyRequest<{ Body: CreateUserBody }>,
@@ -74,7 +75,7 @@ export async function loginHandler(
 
   const token = jwt.sign(
     { id: user.id, email, applicationId, scopes: user.permissions },
-    "rahasianegara", // <== change this
+    env.JWT_SECRET,
   );
 
   return { token };
