@@ -6,6 +6,7 @@ import { roleRoutes } from "@/modules/roles/role.routes";
 import guard from "fastify-guard";
 import jwt from "jsonwebtoken";
 import { env } from "@/config/env";
+import cors from "@fastify/cors";
 
 type User = {
   id: string;
@@ -22,6 +23,11 @@ declare module "fastify" {
 export async function buildServer() {
   const app = fastify({
     logger,
+  });
+  app.register(import("@fastify/formbody"));
+  app.register(import("@fastify/multipart"));
+  app.register(cors, {
+    origin: ["http://localhost:5173"],
   });
 
   app.decorateRequest("user", null);
