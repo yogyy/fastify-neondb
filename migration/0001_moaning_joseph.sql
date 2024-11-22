@@ -1,0 +1,2 @@
+ALTER TABLE "fast_pg_applications" ADD CONSTRAINT "fast_pg_applications_name_unique" UNIQUE("name");--> statement-breakpoint
+ALTER TABLE "fast_pg_users" ADD CONSTRAINT "fast_pg_users_email_unique" UNIQUE("email");

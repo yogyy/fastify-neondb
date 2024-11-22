@@ -12,7 +12,7 @@ const pgTable = pgTableCreator((name) => `fast_pg_${name}`);
 
 export const applications = pgTable("applications", {
   id: uuid("id").primaryKey().defaultRandom(),
-  name: varchar("name", { length: 256 }).notNull(),
+  name: varchar("name", { length: 256 }).notNull().unique(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -21,7 +21,7 @@ export const users = pgTable(
   "users",
   {
     id: uuid("id").defaultRandom().notNull(),
-    email: varchar("email", { length: 256 }).notNull(),
+    email: varchar("email", { length: 256 }).notNull().unique(),
     name: varchar("name", { length: 256 }).notNull(),
     applicationId: uuid("applicationId").references(() => applications.id),
     password: varchar("password", { length: 256 }).notNull(),
