@@ -6,6 +6,7 @@ import {
 } from "./users.schemas";
 import { SYSTEM_ROLES } from "@/config/permission";
 import jwt from "jsonwebtoken";
+import argon2d from "argon2";
 import { getRoleByName } from "../roles/roles.services";
 import {
   assignRoleToUser,
@@ -67,9 +68,14 @@ export async function loginHandler(
   reply: FastifyReply,
 ) {
   const { email, password, applicationId } = request.body;
-  const user = await getUserByEmail({ email, applicationId });
 
+  const user = await getUserByEmail({ email, applicationId });
   if (!user) {
+    return reply.code(400).send({ message: "Invalid email or password" });
+  }
+
+  const verified = await argon2d.verify(user.password, password);
+  if (!verified) {
     return reply.code(400).send({ message: "Invalid email or password" });
   }
 
